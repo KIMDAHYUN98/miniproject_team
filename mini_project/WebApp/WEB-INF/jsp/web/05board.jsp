@@ -29,8 +29,8 @@
 
 <script type="text/javascript">
 	function clickFunc(e) {
-		console.log($(e.target).parent().parent().parent().parent().children().eq(3).html());
-		$('#mTitle').val($(e.target).parent().parent().parent().parent().children().eq(3).html());
+		console.log($(e.target).parent().parent().parent().parent().children().eq(0).html());
+		$('#bNumberd').val($(e.target).parent().parent().parent().parent().children().eq(0).html());
 	}
 </script>
 <style type="text/css">
@@ -84,9 +84,8 @@
 		<table class="table table-bordered">
 			<thead>
 				<tr class="trTitle">
+					<th id="th-no">번호</th>
 					<th id="th-Id">ID</th>
-					<th id="th-tel">전화번호</th>
-					<th id="th-email">이메일</th>
 					<th id="th-title">제목</th>
 					<th id="th-content">내용</th>
 					<th id="th-bkind">평가</th>
@@ -95,18 +94,18 @@
 			</thead>
 			<tbody>
 				<c:forEach var="board" items="${board }">
-					<c:if test="${board.mId eq id }">
+					<c:choose>
+					<c:when test="${board.mId eq id }">
 					<tr class="trContent">
+						<td>${board.bNumber }</td>
 						<td>${board.mId }</td>
-						<td>${board.mTel }</td>
-						<td>${board.mEmail }</td>
 						<td>${board.bTitle }</td>
 						<td>${board.bContent }</td>
 						<td>${board.bKind }</td>
 						<td>
 							<div class="btn-group">
 								<form action="boardEditForm.do" method="post">
-									<input type="hidden" value="${id }" id="mIde" name="mIde">
+									<input type="hidden" value="${board.bNumber }" id="bNumber" name="bNumber">
 									<input name="modify" type="submit" class="btn btn-xs btn-warning" value="수정">
 								</form>
 								<a href="#deleteEmployeeModal" data-toggle="modal" onclick='clickFunc(event)'>
@@ -115,14 +114,33 @@
 							</div>
 						</td>
 					</tr>
-					</c:if>
+					</c:when>
+					<c:when test="${admin eq 'Y' }">
+					<tr class="trContent">
+						<td>${board.bNumber }</td>
+						<td>${board.mId }</td>
+						<td>${board.bTitle }</td>
+						<td>${board.bContent }</td>
+						<td>${board.bKind }</td>
+						<td>
+							<div class="btn-group">
+								<form action="boardEditForm.do" method="post">
+									<input type="hidden" value="${board.bNumber }" id="bNumber" name="bNumber">
+									<input name="modify" type="submit" class="btn btn-xs btn-warning" value="수정">
+								</form>
+								<a href="#deleteEmployeeModal" data-toggle="modal" onclick='clickFunc(event)'>
+									<button name="delete" class="btn btn-xs btn-danger">삭제</button>
+								</a>
+							</div>
+						</td>
+					</tr>
+					</c:when>
+					</c:choose>
 				</c:forEach>
 			</tbody>
 		</table>
 		<form action="boardForm.do" method="post">
 		<input type="hidden" value="${id }" id="mId" name="mId">
-		<input type="hidden" value="${email }" id="mEmail" name="mEmail">
-		<input type="hidden" value="${tel }" id="mTel" name="mTel">
 		<button id="createBtn" type="submit" class="btn btn-info btn-sm" data-toggle="modal">새 글 쓰기</button>
 		</form>
 	</div>
@@ -165,13 +183,13 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form action="boardDelete.do" method="post">
-			<input type="text" id="mTitle" name="mTitle">
+			<input type="hidden" id="bNumberd" name="bNumberd">
 				<div class="modal-header">						
-					<h4 class="modal-title">회원 정보 삭제</h4>
+					<h4 class="modal-title">게시글 삭제</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
-					<p>정말로 회원 정보를 삭제하시겠습니까?</p>
+					<p>정말로 게시글을 삭제하시겠습니까?</p>
 					<p class="text-warning"><small>이 작업은 되돌릴 수 없습니다.</small></p>
 				</div>
 				<div class="modal-footer">

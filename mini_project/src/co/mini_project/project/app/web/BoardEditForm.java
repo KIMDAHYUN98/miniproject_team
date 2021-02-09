@@ -15,8 +15,8 @@ public class BoardEditForm implements Command {
 		BoardVO vo = new BoardVO();
 		BoardDAO dao = new BoardDAO();
 		
-		vo.setmId(request.getParameter("mIde"));
-		System.out.println(request.getParameter("mIde"));
+		vo.setbNumber(Integer.parseInt(request.getParameter("bNumber")));
+		System.out.println(Integer.parseInt(request.getParameter("bNumber")));
 		
 		vo = dao.boardSelect(vo);
 			

@@ -17,8 +17,7 @@ public class BoardInsert implements Command {
 		BoardDAO dao = new BoardDAO();
 		
 		vo.setmId(request.getParameter("mId"));
-		vo.setmTel(request.getParameter("mTel"));
-		vo.setmEmail(request.getParameter("mEmail"));
+		//vo.setbNumber(Integer.parseInt(request.getParameter("bNumber")));
 		vo.setbKind(request.getParameter("bKind"));
 		vo.setbContent(request.getParameter("bContent"));
 		vo.setbTitle(request.getParameter("bTitle"));

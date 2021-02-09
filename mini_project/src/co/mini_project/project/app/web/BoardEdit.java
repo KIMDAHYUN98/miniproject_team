@@ -16,10 +16,10 @@ public class BoardEdit implements Command {
 		BoardVO vo = new BoardVO();
 		BoardDAO dao = new BoardDAO();
 		
+		vo.setbNumber(Integer.parseInt(request.getParameter("bNumber")));
 		vo.setbKind(request.getParameter("bKind"));
 		vo.setbTitle(request.getParameter("bTitle"));
 		vo.setbContent(request.getParameter("bContent"));
-		vo.setmId(request.getParameter("mId"));
 		
 		int n = dao.boardEdit(vo);
 		

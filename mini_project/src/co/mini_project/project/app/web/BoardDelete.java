@@ -16,7 +16,7 @@ public class BoardDelete implements Command {
 		BoardDAO dao = new BoardDAO();
 		BoardVO vo = new BoardVO();
 
-		vo.setbTitle(request.getParameter("mTitle"));
+		vo.setbNumber(Integer.parseInt(request.getParameter("bNumberd")));
 
 		int n = dao.boardDelete(vo);
 		String viewPage = "board.do";

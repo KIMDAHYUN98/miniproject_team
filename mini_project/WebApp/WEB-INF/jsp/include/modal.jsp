@@ -37,22 +37,12 @@
 							<td>
 								<input type="text" id="mId" name="mId" class="form-control" placeholder="아이디" value="${id }">
 							</td>
-							<th>전화번호</th>
-							<td>
-								<input type="text" id="mTel" name="mTel" class="form-control" placeholder="전화번호" value="${tel }">
-							</td>
-						</tr>
-						<tr>
-							<th>이메일</th>
-							<td>
-								<input type="text" id="mEmail" name="mEmail" class="form-control" placeholder="이메일" value="${email }">
-							</td>
 							<th> 평가</th>
-							<td>
-							<label><input type="radio" id="bKind" name="bKind" value="칭찬"> 칭찬</label>&nbsp;
-							<label><input type="radio" id="bKind" name="bKind" value="불만"> 불만</label>&nbsp;
-							<label><input type="radio" id="bKind" name="bKind" value="건의사항"> 건의사항</label>&nbsp;
-							</td>
+								<td>
+								<label><input type="radio" id="bKind" name="bKind" value="칭찬"> 칭찬</label>&nbsp;
+								<label><input type="radio" id="bKind" name="bKind" value="불만"> 불만</label>&nbsp;
+								<label><input type="radio" id="bKind" name="bKind" value="건의사항"> 건의사항</label>&nbsp;
+								</td>
 						</tr>
 						<tr>
 							<td>제목</td>
@@ -68,7 +58,9 @@
 					</tbody>
 				</table>
 				</div><br/>
-				<input type="submit" class="btn btn-primary pull-right" value="글쓰기" />
+				<input type="submit" class="btn btn-primary pull-right" value="글쓰기" />&nbsp;&nbsp;&nbsp;
+				<input type="reset" class="btn btn-primary pull-right" value="취소" />&nbsp;&nbsp;&nbsp;
+				<button type="button" onclick="location.href='board.do'" class="btn btn-primary pull-right">돌아가기</button>
 			</form>
 	</div>
 </body>
