@@ -180,7 +180,7 @@
 						<span class="input-group-text">
 						<i class="fas fa-birthday-cake"></i></span>
 					</div>
-					<input name="mBirth" id="mBirth" class="form-control" placeholder="생년월일(YY/MM/DD)" type="text" required="required">
+					<input name="mBirth" id="mBirth" class="form-control" placeholder="생년월일(YY/MM/DD)" type="date" required="required">
 				</div>
 				<!-- form-group End -->
 				<div class="form-group">

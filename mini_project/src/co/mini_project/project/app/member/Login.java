@@ -27,6 +27,8 @@ public class Login implements Command {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", vo.getmId());
 			session.setAttribute("admin", vo.getAdmin());
+			session.setAttribute("email", vo.getmEmail());
+			session.setAttribute("tel", vo.getmTel());
 			request.setAttribute("vo", vo);
 
 			viewPage = "web/01main";

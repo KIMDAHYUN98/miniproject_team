@@ -1,7 +1,5 @@
 package co.mini_project.project.app.web;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,19 +7,22 @@ import co.mini_project.project.common.Command;
 import co.mini_project.project.dao.BoardDAO;
 import co.mini_project.project.vo.BoardVO;
 
-public class WebBoard implements Command {
+public class BoardEditForm implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 'board.do'
-		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+		// TODO boardEditForm.do 글쓰기 폼 이동
+		BoardVO vo = new BoardVO();
 		BoardDAO dao = new BoardDAO();
 		
-		list = dao.boardList();
+		vo.setmId(request.getParameter("mIde"));
+		System.out.println(request.getParameter("mIde"));
 		
-		request.setAttribute("board", list);
+		vo = dao.boardSelect(vo);
+			
+		request.setAttribute("vo", vo);
 		
-		return "web/05board";
+		return "web/05-boardEditForm";
 	}
 
 }

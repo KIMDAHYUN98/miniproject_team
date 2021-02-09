@@ -10,6 +10,7 @@ public class BoardForm implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// boardForm.do 새글쓰기 폼 이동
+		
 		return "include/modal";
 	}
 

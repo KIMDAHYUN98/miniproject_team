@@ -26,7 +26,7 @@
 <body>
 	<div class="container" align="center">
 		<br><h1>게시판</h1><br/>
-			<form method="post" action="boardInsert.do">
+			<form method="post" action="boardEdit.do">
 				<div class="card bg-light">
 				<table style="text-align: center;">
 					<thead>
@@ -35,17 +35,17 @@
 						<tr>
 							<th>ID</th>
 							<td>
-								<input type="text" id="mId" name="mId" class="form-control" placeholder="아이디" value="${id }">
+								<input type="text" id="mId" name="mId" class="form-control" placeholder="아이디" value="${vo.mId }" readonly="readonly">
 							</td>
 							<th>전화번호</th>
 							<td>
-								<input type="text" id="mTel" name="mTel" class="form-control" placeholder="전화번호" value="${tel }">
+								<input type="text" id="mTel" name="mTel" class="form-control" placeholder="전화번호" value="${vo.mTel }" readonly="readonly">
 							</td>
 						</tr>
 						<tr>
 							<th>이메일</th>
 							<td>
-								<input type="text" id="mEmail" name="mEmail" class="form-control" placeholder="이메일" value="${email }">
+								<input type="text" id="mEmail" name="mEmail" class="form-control" placeholder="이메일" value="${vo.mEmail }" readonly="readonly">
 							</td>
 							<th> 평가</th>
 							<td>
@@ -57,12 +57,12 @@
 						<tr>
 							<td>제목</td>
 							<td colspan="3">
-								<input type="text" size="50" id="bTitle" name="bTitle" class="form-control" placeholder="글 제목" name="bbsTitle" maxlength="50"/>
+								<input type="text" size="50" id="bTitle" name="bTitle" value="${vo.bTitle }" class="form-control" placeholder="글 제목" name="bbsTitle" maxlength="50"/>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="4" >
-								<textarea id="bContent" name="bContent" class="form-control" placeholder="글 내용" name="bbsContent" maxlength="2048" style="height: 350px;"></textarea>
+								<textarea id="bContent" name="bContent" class="form-control" placeholder="글 내용" name="bbsContent" maxlength="2048" style="height: 350px;">${vo.bContent }</textarea>
 							</td>
 						</tr>
 					</tbody>
@@ -73,5 +73,3 @@
 	</div>
 </body>
 </html>
-
-	

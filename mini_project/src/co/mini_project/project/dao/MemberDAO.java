@@ -108,6 +108,8 @@ public class MemberDAO extends DAO {
 				vo = new MemberVO();
 				vo.setmId(rs.getString("mId"));
 				vo.setAdmin(rs.getString("admin"));
+				vo.setmEmail(rs.getString("MEMAIL"));
+				vo.setmTel(rs.getString("MTEL"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
