@@ -39,6 +39,7 @@ import co.mini_project.project.app.web.BoardEdit;
 import co.mini_project.project.app.web.BoardEditForm;
 import co.mini_project.project.app.web.BoardForm;
 import co.mini_project.project.app.web.BoardInsert;
+import co.mini_project.project.app.web.BoardView;
 import co.mini_project.project.app.web.MainCommand;
 import co.mini_project.project.app.web.WebBoard;
 import co.mini_project.project.app.web.WebBrand;
@@ -83,6 +84,7 @@ public class FrontController extends HttpServlet {
 		map.put("/boardEditForm.do", new BoardEditForm()); // 글쓰기 수정 폼 이동
 		map.put("/boardEdit.do", new BoardEdit()); // 글쓰기 수정
 		map.put("/boardDelete.do", new BoardDelete()); // 글쓰기 삭제
+		map.put("/boardView.do", new BoardView()); // 글 상세보기
 		// food(menu) (송다희)
 		map.put("/foodList.do", new FoodList());
 		map.put("/foodInsert.do", new FoodInsert());

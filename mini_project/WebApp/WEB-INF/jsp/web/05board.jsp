@@ -35,9 +35,9 @@
 </script>
 <style type="text/css">
 
- #th-btn {
+#th-btn {
  	width: 141px;
- }
+}
 	
 #th-content {
 	width: 300px;
@@ -47,14 +47,18 @@
 	width: 150px;
 }
 
-
 #th-tel {
 	width: 150px;
 }
 #th-bkind {
 	width: 100px;
 }
-
+#th-no {
+	width: 90px;
+}
+#th-Id {
+	width: 100px;
+}
 .trTitle {
 	background-color: #ffc107;
 }
@@ -66,6 +70,12 @@
 </style>
 </head>
 <jsp:include page="../common/menu.jsp" />
+<script type="text/javascript">
+	function formSubmit(str) {
+		frm.bNumberRow.value = str;
+		frm.submit();
+	}
+</script>
 
 <!-- 페이지 내용 Start -->
 <!-- Page Header Start -->
@@ -78,11 +88,16 @@
 		</div>
 	</div>
 </div>
+<form id="frm" name="frm" action="boardView.do" method="post">
+	<input type="hidden" id="bNumberRow" name="bNumberRow">
+</form>
 <!-- Page Header End -->
 <c:if test="${admin ne null }">
 	<div class="container">
 		<table class="table table-bordered">
 			<thead>
+			<c:choose>
+			<c:when test="${admin eq 'N' }">
 				<tr class="trTitle">
 					<th id="th-no">번호</th>
 					<th id="th-Id">ID</th>
@@ -91,10 +106,22 @@
 					<th id="th-bkind">평가</th>
 					<th id="th-btn">수정 / 삭제</th>
 				</tr>
+				</c:when>
+				<c:when test="${admin eq 'Y' }">
+				<tr class="trTitle">
+					<th id="th-no">번호</th>
+					<th id="th-Id">ID</th>
+					<th id="th-title">제목</th>
+					<th id="th-content">내용</th>
+					<th id="th-bkind">평가</th>
+					<th id="th-btn">삭제</th>
+				</tr>
+				</c:when>
+			</c:choose>
 			</thead>
 			<tbody>
 				<c:forEach var="board" items="${board }">
-					<c:choose>
+				<c:choose>
 					<c:when test="${board.mId eq id }">
 					<tr class="trContent">
 						<td>${board.bNumber }</td>
@@ -116,7 +143,7 @@
 					</tr>
 					</c:when>
 					<c:when test="${admin eq 'Y' }">
-					<tr class="trContent">
+					<tr class="trContent" onclick="formSubmit(${board.bNumber })">
 						<td>${board.bNumber }</td>
 						<td>${board.mId }</td>
 						<td>${board.bTitle }</td>
@@ -124,10 +151,6 @@
 						<td>${board.bKind }</td>
 						<td>
 							<div class="btn-group">
-								<form action="boardEditForm.do" method="post">
-									<input type="hidden" value="${board.bNumber }" id="bNumber" name="bNumber">
-									<input name="modify" type="submit" class="btn btn-xs btn-warning" value="수정">
-								</form>
 								<a href="#deleteEmployeeModal" data-toggle="modal" onclick='clickFunc(event)'>
 									<button name="delete" class="btn btn-xs btn-danger">삭제</button>
 								</a>
@@ -136,7 +159,7 @@
 					</tr>
 					</c:when>
 					</c:choose>
-				</c:forEach>
+					</c:forEach>
 			</tbody>
 		</table>
 		<form action="boardForm.do" method="post">
